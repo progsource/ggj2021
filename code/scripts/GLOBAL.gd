@@ -11,6 +11,7 @@ enum PetType {
 	Dog2,
 	Dog3,
 	Dog4,
+	COUNT
 }
 
 const PetImageMap = {

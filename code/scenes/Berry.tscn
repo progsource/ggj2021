@@ -109,3 +109,7 @@ anims/idle = SubResource( 2 )
 anims/left = SubResource( 5 )
 anims/right = SubResource( 6 )
 anims/up = SubResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true

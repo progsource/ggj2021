@@ -4,8 +4,8 @@
 [ext_resource path="res://scripts/Actor.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 9.05082
-height = 15.6843
+radius = 7.36421
+height = 0.0
 
 [sub_resource type="Animation" id=3]
 resource_name = "down"
@@ -101,6 +101,7 @@ region_enabled = true
 region_rect = Rect2( 16, 0, 16, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.0992126, 10.3181 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -111,5 +112,6 @@ anims/right = SubResource( 6 )
 anims/up = SubResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -0.396851, 8.03622 )
 current = true
 smoothing_enabled = true

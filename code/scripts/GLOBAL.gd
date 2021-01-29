@@ -29,6 +29,10 @@ const PetImageMap = {
 var rng : RandomNumberGenerator
 var actor_factory = load("res://scripts/ActorFactory.gd").new()
 
+
+var is_char_female : bool = true
+
+
 func _ready():
 	rng = RandomNumberGenerator.new()
 	rng.seed = OS.get_unix_time()

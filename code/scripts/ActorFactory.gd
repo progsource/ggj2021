@@ -3,6 +3,11 @@ extends Reference
 var pet_packed = load("res://scenes/Pet.tscn")
 var berry_packed = load("res://scenes/Berry.tscn")
 
+# component order matters
+# 1. input / ai
+# 2. physics
+# 3. animation
+
 func create_pet(pet_type : int, pos : Vector2) -> Object:
 	var instance = pet_packed.instance()
 

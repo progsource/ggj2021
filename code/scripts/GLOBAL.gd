@@ -31,6 +31,7 @@ var actor_factory = load("res://scripts/ActorFactory.gd").new()
 
 
 var is_char_female : bool = true
+var on_wanted_id : int = -1
 
 
 func _ready():

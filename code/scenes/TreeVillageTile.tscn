@@ -32,3 +32,10 @@ tile_data = PoolIntArray( -917501, 10, 0, -917490, 9, 0, -851960, 9, 0, -851958,
 
 [node name="Wanted" parent="." instance=ExtResource( 2 )]
 position = Vector2( 163, -48 )
+
+[node name="hover" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -983037, 28, 0, -983035, 32, 0, -983033, 28, 0, -983031, 29, 0, -983030, 31, 0, -983029, 32, 0, -983028, 28, 0, -983026, 32, 0, -327677, 28, 0, -327675, 29, 0, -327674, 30, 0, -327673, 30, 0, -327672, 30, 0, -327671, 32, 0 )

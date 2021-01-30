@@ -80,7 +80,7 @@ class RandomWalk:
 		timer.queue_free()
 		GLOBAL.event_bus.disconnect("follow_chain", self, "_on_follow_chain_updated")
 		parent.current_state = next
-		parent.speed = 1.2
+		parent.speed = 1.8
 #		print(parent.current_state.name, " is now active")
 
 # ------------------------------------------------------------------------------
@@ -107,7 +107,6 @@ class FollowChain:
 			parent.actor.direction = Vector2.ZERO
 			parent.actor.velocity = Vector2.ZERO
 			return
-#		print("distance is %d" % distance)
 			
 		var closest_point_to_actor = astar.get_closest_point(parent.actor.global_position)
 		var closest_point_to_target = astar.get_closest_point(target.global_position)
@@ -149,7 +148,7 @@ func _move_along_path(path):
 		if i == 0:
 			continue
 
-		var velocity : Vector2
+		var velocity : Vector2 = Vector2.ZERO
 		if path[i].x < start_position.x:
 			velocity.x = -1
 		elif path[i].x > start_position.x:

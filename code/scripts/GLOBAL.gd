@@ -47,6 +47,7 @@ var pet_type_object_pool = null
 var event_bus = null
 var astar_tilemap_connector = null
 var chain_controller = null
+var poster_factory = null
 
 
 var is_char_female : bool = true
@@ -60,6 +61,7 @@ func _ready():
 	rng.randomize()
 
 	actor_factory = load_my_resource("res://scripts/ActorFactory.gd").new()
+	poster_factory = load_my_resource("res://scripts/PosterFactory.gd").new()
 	pet_type_object_pool = load_my_resource("res://scripts/PetTypeObjectPool.gd").new()
 	pet_type_object_pool.init_pool()
 	event_bus = load_my_resource("res://scripts/EventBus.gd").new()

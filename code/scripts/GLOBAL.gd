@@ -33,6 +33,7 @@ var actor_factory = null
 var pet_type_object_pool = null
 var event_bus = null
 var astar_tilemap_connector = null
+var chain_controller = null
 
 
 var is_char_female : bool = true
@@ -54,6 +55,8 @@ func _ready():
 	astar_tilemap_connector.init_astar()
 
 	follow_chain = load_my_resource("res://scripts/Fifo.gd").new()
+	chain_controller = load_my_resource("res://scripts/ChainController.gd").new()
+	chain_controller.init()
 
 func load_my_resource(var path : String) -> Resource:
 	load_mutex.lock()

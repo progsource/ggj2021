@@ -30,3 +30,14 @@ func pop():
 	head = head.next
 	head.prev = null
 	return o
+
+func get_item_list() -> Array:
+	var list := []
+
+	var i = head
+
+	while i.next != null:
+		list.append(i)
+		i = i.next
+
+	return list

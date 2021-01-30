@@ -11,6 +11,7 @@ extends "res://scripts/ActorComponent.gd"
 class State:
 	var parent = null
 	var next = null
+	var name : String = "" # for debug
 
 	func init():
 		pass
@@ -28,6 +29,7 @@ class RandomWalk:
 	var astar = null
 	
 	func init():
+		name = "RandomWalk"
 		astar = GLOBAL.astar_tilemap_connector.astar
 		timer = Timer.new()
 		timer.autostart = true
@@ -66,33 +68,50 @@ class RandomWalk:
 	func _on_timer_timeout():
 		_create_new_target_position()
 
-	func _on_follow_chain_updated(actor_object, _target_object) -> void:
-		if actor_object != parent.actor:
+	func _on_follow_chain_updated(actor_object, target_object) -> void:
+#		print("in %s" % name)
+		if parent.current_state != self:
+			return
+
+		if actor_object != parent.actor or target_object == null:
 			return
 
 		timer.disconnect("timeout", self, "_on_timer_timeout")
 		timer.queue_free()
 		GLOBAL.event_bus.disconnect("follow_chain", self, "_on_follow_chain_updated")
 		parent.current_state = next
+#		print(parent.current_state.name, " is now active")
 
 # ------------------------------------------------------------------------------
 
 class FollowChain:
 	extends State
 
-	const distance = 32
+	const min_distance = 34
 
 	var astar = null
 	var target = null
 
 	func init():
+		name = "FollowChain"
 		astar = GLOBAL.astar_tilemap_connector.astar
 		GLOBAL.event_bus.connect("follow_chain", self, "_on_follow_chain_updated")
 
 	func process(_delta):
+		if not target:
+			return
+			
+		var distance = parent.actor.global_position.distance_to(target.global_position)
+		if distance <= min_distance:
+			parent.actor.direction = Vector2.ZERO
+			parent.actor.velocity = Vector2.ZERO
+			return
+#		print("distance is %d" % distance)
+			
 		var closest_point_to_actor = astar.get_closest_point(parent.actor.global_position)
 		var closest_point_to_target = astar.get_closest_point(target.global_position)
 		var path = astar.get_point_path(closest_point_to_actor, closest_point_to_target)
+#		print("path size %d" % path.size())
 
 		parent._move_along_path(path)
 
@@ -101,6 +120,11 @@ class FollowChain:
 			return
 
 		target = target_object
+		if parent.current_state != self:
+			return
+		if target == null:
+			GLOBAL.event_bus.disconnect("follow_chain", self, "_on_follow_chain_updated")
+			parent.current_state = next
 
 # ------------------------------------------------------------------------------
 
@@ -150,8 +174,9 @@ func _move_along_path(path):
 func init() -> void :
 	states.append(RandomWalk.new())
 	states.append(FollowChain.new())
-	
+
 	states[0].next = states[1]
+#	states[1].next = states[2] # TODO: go home
 
 	for s in states:
 		s.parent = self
@@ -160,5 +185,6 @@ func init() -> void :
 	current_state = states[0]
 
 func process(delta) -> void :
-	current_state.process(delta)
+	if current_state:
+		current_state.process(delta)
 

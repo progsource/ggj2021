@@ -10,6 +10,7 @@ extends "res://scripts/ActorComponent.gd"
 
 class State:
 	var parent = null
+	var next = null
 
 	func init():
 		pass
@@ -36,6 +37,7 @@ class RandomWalk:
 		# warning-ignore:return_value_discarded
 		timer.connect("timeout", self, "_on_timer_timeout")
 		parent.actor.add_child(timer)
+		GLOBAL.event_bus.connect("follow_chain", self, "_on_follow_chain_updated")
 
 	func process(_delta):
 		parent.actor.velocity = Vector2.ZERO
@@ -63,6 +65,42 @@ class RandomWalk:
 	
 	func _on_timer_timeout():
 		_create_new_target_position()
+
+	func _on_follow_chain_updated(actor_object, _target_object) -> void:
+		if actor_object != parent.actor:
+			return
+
+		timer.disconnect("timeout", self, "_on_timer_timeout")
+		timer.queue_free()
+		GLOBAL.event_bus.disconnect("follow_chain", self, "_on_follow_chain_updated")
+		parent.current_state = next
+
+# ------------------------------------------------------------------------------
+
+class FollowChain:
+	extends State
+
+	const distance = 32
+
+	var astar = null
+	var target = null
+
+	func init():
+		astar = GLOBAL.astar_tilemap_connector.astar
+		GLOBAL.event_bus.connect("follow_chain", self, "_on_follow_chain_updated")
+
+	func process(_delta):
+		var closest_point_to_actor = astar.get_closest_point(parent.actor.global_position)
+		var closest_point_to_target = astar.get_closest_point(target.global_position)
+		var path = astar.get_point_path(closest_point_to_actor, closest_point_to_target)
+
+		parent._move_along_path(path)
+
+	func _on_follow_chain_updated(actor_object, target_object) -> void:
+		if actor_object != parent.actor:
+			return
+
+		target = target_object
 
 # ------------------------------------------------------------------------------
 
@@ -111,6 +149,9 @@ func _move_along_path(path):
 
 func init() -> void :
 	states.append(RandomWalk.new())
+	states.append(FollowChain.new())
+	
+	states[0].next = states[1]
 
 	for s in states:
 		s.parent = self
@@ -120,3 +161,4 @@ func init() -> void :
 
 func process(delta) -> void :
 	current_state.process(delta)
+

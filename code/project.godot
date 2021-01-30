@@ -15,7 +15,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="ggj2021"
+config/name="Berries come for you"
+config/description="The pets in the neighborhood got lost. Help the owners to find them."
 run/main_scene="res://scenes/Title.tscn"
 config/icon="res://icon.png"
 

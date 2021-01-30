@@ -1,8 +1,11 @@
 extends Control
 
 func _ready():
-	# warning-ignore:return_value_discarded
-	$VBoxContainer/ExitButton.connect("button_up", self, "on_exit")
+	if OS.has_feature("javascript"):
+		$VBoxContainer/ExitButton.hide()
+	else:
+		# warning-ignore:return_value_discarded
+		$VBoxContainer/ExitButton.connect("button_up", self, "on_exit")
 	
 	# warning-ignore:return_value_discarded
 	$VBoxContainer/HBoxContainer/PlayFem.connect("button_up", self, "on_play_fem")

@@ -9,6 +9,12 @@ class Item:
 	var obj = null
 
 func push_back(obj) -> void :
+	var i = head
+	while i != null:
+		if i.obj == obj:
+			return
+		i = i.next
+	
 	var item = Item.new()
 	item.obj = obj
 
@@ -36,8 +42,10 @@ func get_item_list() -> Array:
 
 	var i = head
 
-	while i.next != null:
+	while true:
 		list.append(i)
+		if i.next == null:
+			break
 		i = i.next
 
 	return list

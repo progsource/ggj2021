@@ -37,6 +37,7 @@ var astar_tilemap_connector = null
 
 var is_char_female : bool = true
 var on_wanted_id : int = -1
+var follow_chain = null
 
 
 func _ready():
@@ -51,6 +52,8 @@ func _ready():
 
 	astar_tilemap_connector = load_my_resource("res://scripts/AStarTileMapConnector.gd").new()
 	astar_tilemap_connector.init_astar()
+
+	follow_chain = load_my_resource("res://scripts/Fifo.gd").new()
 
 func load_my_resource(var path : String) -> Resource:
 	load_mutex.lock()

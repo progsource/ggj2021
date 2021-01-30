@@ -4,7 +4,6 @@ onready var animation_player = $ActionDisplay/AnimationPlayer
 onready var actor = get_parent()
 
 func _ready():
-	add_to_group("pet_action")
 	GLOBAL.event_bus.connect(
 		"follow_set",
 		self,
@@ -34,4 +33,3 @@ func _on_follow_set(pet_actor):
 		self.disconnect("body_entered", self, "_on_body_entered")
 		self.disconnect("body_exited", self, "_on_body_exited")
 		GLOBAL.event_bus.disconnect("follow_set", self, "_on_follow_set")
-		add_to_group("ignore")

@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/gfx/spritesheet.tres" type="TileSet" id=1]
-[ext_resource path="res://scenes/Wanted.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/Neighborhood.gd" type="Script" id=3]
 [ext_resource path="res://scenes/PetSpot.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=5]
@@ -47,12 +46,6 @@ position = Vector2( -184, -224 )
 
 [node name="player" type="Node2D" parent="."]
 
-[node name="Wanted" parent="." instance=ExtResource( 2 )]
-position = Vector2( 163, -48 )
-
-[node name="Wanted2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 295.48, 51.4047 )
-
 [node name="hover" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
@@ -71,3 +64,17 @@ tile_data = PoolIntArray( -1048589, 0, 0, -1048588, 0, 1, -1048587, 0, 1, -10485
 [node name="DebugNavi" parent="." instance=ExtResource( 6 )]
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
+
+[node name="PosterContainer" type="Node2D" parent="."]
+
+[node name="PosterSpot" type="Position2D" parent="PosterContainer"]
+position = Vector2( 295.916, 50.9424 )
+
+[node name="PosterSpot2" type="Position2D" parent="PosterContainer"]
+position = Vector2( 108.627, 209.014 )
+
+[node name="PosterSpot3" type="Position2D" parent="PosterContainer"]
+position = Vector2( 164.065, -47.5713 )
+
+[node name="PosterSpot4" type="Position2D" parent="PosterContainer"]
+position = Vector2( 90.273, -198.526 )

@@ -27,6 +27,11 @@ const PetImageMap = {
 	PetType.Dog4 : "dog4.png",
 }
 
+var game_data = {
+	"time": 0,
+	"best_time": 0,
+}
+
 var load_mutex = Mutex.new()
 var rng : RandomNumberGenerator
 var actor_factory = null

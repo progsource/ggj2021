@@ -14,6 +14,18 @@ enum PetType {
 	COUNT
 }
 
+enum GameType {
+	Time,
+	Math,
+	Delivery
+}
+
+const GameTypeMap = {
+	GameType.Time : "Time",
+	GameType.Math : "Math",
+	GameType.Delivery: "Delivery"
+}
+
 const PetImageMap = {
 	PetType.Cat0 : "cat0.png",
 	PetType.Cat1 : "cat1.png",
@@ -31,6 +43,8 @@ var game_data = {
 	"time": 0,
 	"best_time": 0,
 }
+
+var game_mode = GameTypeMap[GameType.Time]
 
 var load_mutex = Mutex.new()
 var rng : RandomNumberGenerator
@@ -59,9 +73,15 @@ func _ready():
 	astar_tilemap_connector.init_astar()
 
 	follow_chain = load_my_resource("res://scripts/Fifo.gd").new()
+	
+	_randomize_game_mode()
 
 func load_my_resource(var path : String) -> Resource:
 	load_mutex.lock()
 	var result = load(path)
 	load_mutex.unlock()
 	return result
+	
+func _randomize_game_mode() -> void :
+	game_mode = GameTypeMap[randi() % GameTypeMap.keys().size()]
+	game_mode = GameTypeMap[GameType.Time]

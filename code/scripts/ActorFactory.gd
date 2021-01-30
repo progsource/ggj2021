@@ -11,7 +11,7 @@ var berry_packed = load("res://scenes/Berry.tscn")
 func create_pet(pet_type : int, pos : Vector2) -> Object:
 	var instance = pet_packed.instance()
 
-	instance.add_component(load("res://scripts/ActorFollowComponent.gd").new())
+	instance.add_component(load("res://scripts/ActorAIComponent.gd").new())
 	instance.add_component(load("res://scripts/ActorPhysicsComponent.gd").new())
 	instance.add_component(load("res://scripts/ActorAnimationComponent.gd").new())
 	instance.position = pos

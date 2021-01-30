@@ -1,9 +1,10 @@
 extends Node2D
 
 
-
-
 func _ready():
+	GLOBAL.astar_tilemap_connector.generate_vertices($Navi, [0])
+	$Navi.visible = false
+	
 	var player = GLOBAL.actor_factory.create_berry(GLOBAL.is_char_female, Vector2(0, 0))
 	$player.add_child(player)
 	

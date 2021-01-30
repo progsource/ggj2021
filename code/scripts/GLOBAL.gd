@@ -82,4 +82,3 @@ func load_my_resource(var path : String) -> Resource:
 func _randomize_game_mode() -> void :
 	var key = GameType.keys()[randi() % GameType.keys().size()]
 	game_mode = GameType[key]
-	game_mode = GameType.Time

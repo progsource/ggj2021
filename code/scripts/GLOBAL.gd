@@ -27,8 +27,9 @@ const PetImageMap = {
 	PetType.Dog4 : "dog4.png",
 }
 
+var load_mutex = Mutex.new()
 var rng : RandomNumberGenerator
-var actor_factory = load("res://scripts/ActorFactory.gd").new()
+var actor_factory = null
 
 
 var is_char_female : bool = true
@@ -39,3 +40,11 @@ func _ready():
 	rng = RandomNumberGenerator.new()
 	rng.seed = OS.get_unix_time()
 	rng.randomize()
+	
+	actor_factory = load_my_resource("res://scripts/ActorFactory.gd").new()
+
+func load_my_resource(var path : String) -> Resource:
+	load_mutex.lock()
+	var result = load(path)
+	load_mutex.unlock()
+	return result

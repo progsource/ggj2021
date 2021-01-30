@@ -34,7 +34,8 @@ func pop():
 
 	var o = head.obj
 	head = head.next
-	head.prev = null
+	if head != null:
+		head.prev = null
 	return o
 
 func get_item_list() -> Array:

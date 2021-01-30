@@ -128,6 +128,47 @@ class FollowChain:
 
 # ------------------------------------------------------------------------------
 
+class GoHome:
+	extends State
+	
+	var target = null
+	var astar = null
+	
+	func init():
+		name = "GoHome"
+		astar = GLOBAL.astar_tilemap_connector.astar
+		GLOBAL.event_bus.connect("follow_release", self, "_on_follow_release")
+		
+	func process(_delta):
+		if not target:
+			return
+			
+		var distance = parent.actor.global_position.distance_to(target.delivery_spot.global_position)
+		if distance <= 8:
+			parent.actor.direction = Vector2.ZERO
+			parent.actor.velocity = Vector2.ZERO
+			parent.actor.play_animation("idle")
+			target = null
+			parent.actor.hide()
+			parent.actor.set_process(false)
+			return
+
+		var closest_point_to_actor = astar.get_closest_point(parent.actor.global_position)
+		var closest_point_to_target = astar.get_closest_point(target.delivery_spot.global_position)
+		var path = astar.get_point_path(closest_point_to_actor, closest_point_to_target)
+
+		parent._move_along_path(path)
+
+	func _on_follow_release(actor_object, target_object) -> void:
+		if actor_object != parent.actor or target_object == null:
+			return
+			
+		target = target_object
+		GLOBAL.event_bus.disconnect("follow_release", self, "_on_follow_release")
+		parent.current_state = self
+
+# ------------------------------------------------------------------------------
+
 var states : Array = []
 var current_state = null
 var speed : float = 0.5
@@ -176,9 +217,10 @@ func _move_along_path(path):
 func init() -> void :
 	states.append(RandomWalk.new())
 	states.append(FollowChain.new())
+	states.append(GoHome.new())
 
 	states[0].next = states[1]
-#	states[1].next = states[2] # TODO: go home
+	states[1].next = states[2] # TODO: go home
 
 	for s in states:
 		s.parent = self

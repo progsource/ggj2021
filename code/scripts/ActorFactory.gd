@@ -23,6 +23,7 @@ func create_pet(pet_type : int, pos : Vector2) -> Object:
 func create_berry(is_female : bool, pos : Vector2) -> Object:
 	var instance = berry_packed.instance()
 
+	instance.add_component(load("res://scripts/ActorActionComponent.gd").new())
 	instance.add_component(load("res://scripts/ActorInputComponent.gd").new())
 	instance.add_component(load("res://scripts/ActorPhysicsComponent.gd").new())
 	instance.add_component(load("res://scripts/ActorAnimationComponent.gd").new())

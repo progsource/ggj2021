@@ -31,6 +31,7 @@ var load_mutex = Mutex.new()
 var rng : RandomNumberGenerator
 var actor_factory = null
 var pet_type_object_pool = null
+var event_bus = null
 
 
 var is_char_female : bool = true
@@ -45,6 +46,7 @@ func _ready():
 	actor_factory = load_my_resource("res://scripts/ActorFactory.gd").new()
 	pet_type_object_pool = load_my_resource("res://scripts/PetTypeObjectPool.gd").new()
 	pet_type_object_pool.init_pool()
+	event_bus = load_my_resource("res://scripts/EventBus.gd").new()
 
 func load_my_resource(var path : String) -> Resource:
 	load_mutex.lock()

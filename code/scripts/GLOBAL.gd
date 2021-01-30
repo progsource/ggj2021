@@ -33,6 +33,8 @@ const PetImageMap = {
 	PetType.Dog4 : "dog4.png",
 }
 
+const DEBUG := false
+
 var game_data = {
 	"time": 0,
 	"best_time": 0,

@@ -1,11 +1,12 @@
 extends Node2D
 
-
 func _ready():
 	GLOBAL.astar_tilemap_connector.debug_node = $DebugNavi
 	GLOBAL.astar_tilemap_connector.generate_vertices($Navi, [0])
-	GLOBAL.astar_tilemap_connector.draw_debug()
-#	$Navi.visible = false
+	$DebugNavi.visible = GLOBAL.DEBUG
+	if GLOBAL.DEBUG:
+		GLOBAL.astar_tilemap_connector.draw_debug()
+	$Navi.visible = GLOBAL.DEBUG
 	
 	var player = GLOBAL.actor_factory.create_berry(GLOBAL.is_char_female, Vector2(0, 0))
 	$player.add_child(player)

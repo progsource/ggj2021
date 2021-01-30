@@ -139,8 +139,9 @@ func _move_by_velocity(v : Vector2) -> void :
 func _move_along_path(path):
 	if path.size() == 0:
 		return
-		
-	debug_path(path)
+
+	if GLOBAL.DEBUG:
+		debug_path(path)
 
 	var start_position = actor.position
 

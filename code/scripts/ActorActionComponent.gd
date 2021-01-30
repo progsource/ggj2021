@@ -22,7 +22,14 @@ func _pickup_action():
 			nearest_actions.erase(pet)
 
 func _deliver_action():
-	print("to do --> Action::_deliver_action")
+	for poster in nearest_actions:
+		if "poster" in poster.get_groups():
+			GLOBAL.event_bus.emit_signal(
+				"follow_release",
+				GLOBAL.follow_chain.pop(),
+				poster
+			)
+			nearest_actions.erase(poster)
 
 func _on_action_radius_exited(action_object):
 	if nearest_actions.has(action_object):

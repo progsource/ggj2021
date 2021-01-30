@@ -34,7 +34,9 @@ func pop():
 
 	var o = head.obj
 	head = head.next
-	head.prev = null
+	if head != null:
+		head.prev = null
+	GLOBAL.event_bus.emit_signal("fifo_pop")
 	return o
 
 func get_item_list() -> Array:

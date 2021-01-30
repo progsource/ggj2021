@@ -14,16 +14,10 @@ enum PetType {
 	COUNT
 }
 
-enum GameType {
-	Time,
-	Math,
-	Delivery
-}
-
-const GameTypeMap = {
-	GameType.Time : "Time",
-	GameType.Math : "Math",
-	GameType.Delivery: "Delivery"
+const GameType = {
+	"Time" : "Time",
+	"Math" : "Math",
+	"Delivery": "Delivery",
 }
 
 const PetImageMap = {
@@ -44,7 +38,7 @@ var game_data = {
 	"best_time": 0,
 }
 
-var game_mode = GameTypeMap[GameType.Time]
+var game_mode = GameType.Time
 
 var load_mutex = Mutex.new()
 var rng : RandomNumberGenerator
@@ -86,5 +80,6 @@ func load_my_resource(var path : String) -> Resource:
 	return result
 	
 func _randomize_game_mode() -> void :
-	game_mode = GameTypeMap[randi() % GameTypeMap.keys().size()]
-	game_mode = GameTypeMap[GameType.Time]
+	var key = GameType.keys()[randi() % GameType.keys().size()]
+	game_mode = GameType[key]
+	game_mode = GameType.Time

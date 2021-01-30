@@ -111,14 +111,13 @@ class FollowChain:
 		var closest_point_to_actor = astar.get_closest_point(parent.actor.global_position)
 		var closest_point_to_target = astar.get_closest_point(target.global_position)
 		var path = astar.get_point_path(closest_point_to_actor, closest_point_to_target)
-#		print("path size %d" % path.size())
 
 		parent._move_along_path(path)
 
 	func _on_follow_chain_updated(actor_object, target_object) -> void:
 		if actor_object != parent.actor:
 			return
-
+			
 		target = target_object
 		if parent.current_state != self:
 			return
@@ -140,6 +139,8 @@ func _move_by_velocity(v : Vector2) -> void :
 func _move_along_path(path):
 	if path.size() == 0:
 		return
+		
+	debug_path(path)
 
 	var start_position = actor.position
 
@@ -187,4 +188,12 @@ func init() -> void :
 func process(delta) -> void :
 	if current_state:
 		current_state.process(delta)
-
+		
+func debug_path(path):
+	if GLOBAL.debug_path && current_state && current_state.name == "FollowChain":
+		var debug = actor.get_node("debug")
+		if not debug:
+			return
+		debug.clear_points()
+		for point in path:
+			debug.add_point(actor.transform.xform_inv(point))

@@ -52,7 +52,7 @@ var chain_controller = null
 var is_char_female : bool = true
 var on_wanted_id : int = -1
 var follow_chain = null
-
+var debug_path = true
 
 func _ready():
 	rng = RandomNumberGenerator.new()
@@ -80,5 +80,5 @@ func load_my_resource(var path : String) -> Resource:
 	return result
 	
 func _randomize_game_mode() -> void :
-	var key = GameType.keys()[randi() % GameType.keys().size()]
+	var key = GameType.keys()[rng.randi_range(0, GameType.keys().size() - 1)]
 	game_mode = GameType[key]

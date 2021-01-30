@@ -7,6 +7,8 @@ func init():
 
 func _on_follow_set(pet_actor) -> void:
 	GLOBAL.follow_chain.push_back(pet_actor)
-	
 	for chain_item in GLOBAL.follow_chain.get_item_list():
-		GLOBAL.event_bus.emit_signal("follow_chain", chain_item.obj, chain_item.prev.obj if chain_item.prev else player_obj)
+		var target = player_obj
+		if chain_item.prev:
+			target = chain_item.prev.obj
+		GLOBAL.event_bus.emit_signal("follow_chain", chain_item.obj, target)

@@ -6,9 +6,9 @@ extends KinematicBody2D
 # 3. animation
 var components := []
 
-var velocity : Vector2
+var velocity : Vector2 = Vector2.ZERO
 var speed : float = 95
-var direction : Vector2
+var direction : Vector2 = Vector2.ZERO
 
 func add_component(component) -> void :
 	component.actor = self

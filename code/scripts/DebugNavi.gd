@@ -10,6 +10,4 @@ func _draw():
 		for c in GLOBAL.astar_tilemap_connector.astar.get_point_connections(p):
 			var pp = GLOBAL.astar_tilemap_connector.astar.get_point_position(p)
 			var cp = GLOBAL.astar_tilemap_connector.astar.get_point_position(c)
-			draw_line(Vector2(pp.x, pp.y),
-			Vector2(cp.x, cp.y),
-			color)
+			draw_line(Vector2(pp.x, pp.y), Vector2(cp.x, cp.y), color)

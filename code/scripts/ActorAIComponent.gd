@@ -221,7 +221,7 @@ func init() -> void :
 	states.append(GoHome.new())
 
 	states[0].next = states[1]
-	states[1].next = states[2] # TODO: go home
+	states[1].next = states[2]
 
 	for s in states:
 		s.parent = self

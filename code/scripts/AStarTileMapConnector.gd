@@ -16,7 +16,6 @@ func generate_vertices(tilemap : TileMap, walkable_tile_types : Array):
 	debug_connection_size = 0
 
 	var used_rect = tilemap.get_used_rect()
-	print("used rect pos: %d:%d" % [used_rect.position.x, used_rect.position.y])
 
 	for y in range(used_rect.position.y, used_rect.size.y):
 		for x in range(used_rect.position.x, used_rect.size.x):
@@ -32,7 +31,7 @@ func generate_vertices(tilemap : TileMap, walkable_tile_types : Array):
 		pos.x = used_rect.position.x + (pos.x * 16) + 8 + 16
 		pos.y = used_rect.position.y + (pos.y * 16) + 8 + 16
 		astar.add_point(p["id"], pos)
-	
+
 	assert(astar.get_points().size() == nav_vertices.size())
 
 	for y in range(used_rect.position.y, used_rect.size.y):

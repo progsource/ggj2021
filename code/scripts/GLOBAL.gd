@@ -37,7 +37,9 @@ const DEBUG := false
 
 var game_data = {
 	"time": 0,
-	"best_time": 0,
+	"best_time": 60 * 2,
+	"max_time": 60 * 2,
+	"pets": 7,
 }
 
 var game_mode = GameType.Time

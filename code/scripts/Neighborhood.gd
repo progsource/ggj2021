@@ -12,7 +12,9 @@ func _ready():
 	$player.add_child(player)
 	
 	var poster_spots = $PosterContainer.get_children()
-	for c in $PetContainer.get_children():
+	var pet_spots = $PetContainer.get_children()
+	GLOBAL.game_data.pets = pet_spots.size()
+	for c in pet_spots:
 		var pt = GLOBAL.pet_type_object_pool.get_random_pet_type()
 		if pt == -1:
 			break

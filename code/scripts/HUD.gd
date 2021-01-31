@@ -5,6 +5,8 @@ func _ready():
 	_display_mode()
 	
 func _process(delta):
+	if GLOBAL.game_data.pets <= 0:
+		get_tree().change_scene("res://scenes/End.tscn")
 	match GLOBAL.game_mode:
 		GLOBAL.GameType.Time:
 			_time_attack(delta)
@@ -13,8 +15,11 @@ func _process(delta):
 
 func _time_attack(delta):
 	GLOBAL.game_data["time"] += delta
-	var seconds = fmod(GLOBAL.game_data.time, 60)
-	var minutes = fmod(GLOBAL.game_data.time, 3600) / 60
+	var time = GLOBAL.game_data["max_time"] - GLOBAL.game_data["time"]
+	if time <= 0:
+		get_tree().change_scene("res://scenes/End.tscn")
+	var seconds = fmod(time, 60)
+	var minutes = fmod(time, 3600) / 60
 	var str_elapsed = "%02d : %02d" % [minutes, seconds]
 	$TimeBox/Container/Value.text = str_elapsed
 

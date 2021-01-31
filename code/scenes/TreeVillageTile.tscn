@@ -67,15 +67,15 @@ tile_data = PoolIntArray( -1048589, 0, 0, -1048588, 0, 1, -1048587, 0, 1, -10485
 [node name="PosterContainer" type="Node2D" parent="."]
 
 [node name="PosterSpot" type="Position2D" parent="PosterContainer"]
-position = Vector2( 295.916, 50.9424 )
+position = Vector2( 296, 50 )
 
 [node name="PosterSpot2" type="Position2D" parent="PosterContainer"]
-position = Vector2( 108.627, 209.014 )
+position = Vector2( 108, 210 )
 
 [node name="PosterSpot3" type="Position2D" parent="PosterContainer"]
-position = Vector2( 164.065, -47.5713 )
+position = Vector2( 164, -48 )
 
 [node name="PosterSpot4" type="Position2D" parent="PosterContainer"]
-position = Vector2( 90.273, -198.526 )
+position = Vector2( 90, -198 )
 
 [node name="DebugNavi" parent="." instance=ExtResource( 2 )]

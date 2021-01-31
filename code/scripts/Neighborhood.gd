@@ -21,6 +21,10 @@ func _ready():
 		c.pet_type = pt
 		var pos = c.get_position() + Vector2(8, 8)
 		var pet = GLOBAL.actor_factory.create_pet(pt, pos)
+		if poster_spots.size() == 0:
+			return
 		var poster = GLOBAL.poster_factory.create_poster(pt, poster_spots.pop_front().get_position())
+		if poster == null:
+			return
 		$objects.add_child(pet)
 		$objects.add_child(poster)

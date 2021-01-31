@@ -41,6 +41,15 @@ position = Vector2( 0, 8 )
 [node name="PetSpot2" parent="PetContainer" instance=ExtResource( 4 )]
 position = Vector2( -96, 0 )
 
+[node name="PetSpot5" parent="PetContainer" instance=ExtResource( 4 )]
+position = Vector2( 712, -16 )
+
+[node name="PetSpot6" parent="PetContainer" instance=ExtResource( 4 )]
+position = Vector2( 1240, 448 )
+
+[node name="PetSpot7" parent="PetContainer" instance=ExtResource( 4 )]
+position = Vector2( -488, 776 )
+
 [node name="PetSpot3" parent="PetContainer" instance=ExtResource( 4 )]
 position = Vector2( 184, -112 )
 
@@ -73,9 +82,15 @@ position = Vector2( 296, 50 )
 position = Vector2( 108, 210 )
 
 [node name="PosterSpot3" type="Position2D" parent="PosterContainer"]
-position = Vector2( 164, -48 )
+position = Vector2( 344, 432 )
 
 [node name="PosterSpot4" type="Position2D" parent="PosterContainer"]
 position = Vector2( 90, -198 )
+
+[node name="PosterSpot5" type="Position2D" parent="PosterContainer"]
+position = Vector2( 1136, 464 )
+
+[node name="PosterSpot6" type="Position2D" parent="PosterContainer"]
+position = Vector2( 928, 208 )
 
 [node name="DebugNavi" parent="." instance=ExtResource( 2 )]

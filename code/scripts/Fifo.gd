@@ -36,6 +36,8 @@ func pop():
 	head = head.next
 	if head != null:
 		head.prev = null
+	else:
+		tail = null
 	GLOBAL.event_bus.emit_signal("fifo_pop")
 	return o
 

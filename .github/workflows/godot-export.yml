@@ -1,6 +1,8 @@
 name: "godot export"
 on: push
 
+environment: itch.io workflow
+
 env:
   GODOT_VERSION: 3.2.3
   EXPORT_NAME: berries-come-for-you

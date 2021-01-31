@@ -16,8 +16,6 @@ Press `e` when near a Pet to collect them, go to a Poster and press `e` to retur
 | --- | --- |
 | Art: | @progsource |
 | Dev: | @teemitzitrone, @progsource |
-| Sound: | @teemitzitrone, @progsource |
-| Music: | pending... |
 
 ### Used Tools
 
@@ -29,13 +27,14 @@ Press `e` when near a Pet to collect them, go to a Poster and press `e` to retur
 
 ## Code License
 
-MIT
+[MIT](LICENSE)
 
-## Asset Licenses
-1bit_control_prompts_by_retryeli.zip \
--> https://opengameart.org/content/1bit-keyboardcontroller-prompts-assets\
--> Copyright/Attribution Notice: @retryeli
+## Credits
 
-kenney_fontpackage.zip \
--> https://kenney.nl/assets/kenney-fonts \
--> Copyright/Attribution Notice: @KenneyNL
+1bit_control_prompts_by_retryeli.zip
+* https://opengameart.org/content/1bit-keyboardcontroller-prompts-assets
+* Copyright/Attribution Notice: @retryeli
+
+kenney_fontpackage.zip
+* https://kenney.nl/assets/kenney-fonts
+* Copyright/Attribution Notice: @KenneyNL

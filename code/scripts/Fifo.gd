@@ -41,6 +41,8 @@ func pop():
 
 func get_item_list() -> Array:
 	var list := []
+	if head == null:
+		return list
 
 	var i = head
 

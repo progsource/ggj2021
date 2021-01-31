@@ -28,8 +28,8 @@ func generate_vertices(tilemap : TileMap, walkable_tile_types : Array):
 	astar.clear()
 	for p in nav_vertices:
 		var pos = p["pos"]
-		pos.x = used_rect.position.x + (pos.x * 16) + 4 + 16
-		pos.y = used_rect.position.y + (pos.y * 16) + 8 + 16
+		pos.x = used_rect.position.x + (pos.x * 16) + 60
+		pos.y = used_rect.position.y + (pos.y * 16) + 36
 		astar.add_point(p["id"], pos)
 
 	assert(astar.get_points().size() == nav_vertices.size())

@@ -1,14 +1,13 @@
 name: "godot export"
 on: push
 
-environment: itch.io workflow
-
 env:
   GODOT_VERSION: 3.2.3
   EXPORT_NAME: berries-come-for-you
 
 jobs:
   export-web:
+    environment: itch.io workflow
     name: Web Export
     runs-on: ubuntu-latest
     container:
@@ -34,6 +33,7 @@ jobs:
           name: ${{ env.EXPORT_NAME }}-web
           path: ${{ env.EXPORT_NAME }}-web.zip
   publish-web:
+    environment: itch.io workflow
     name: Publish to itch.io (Web)
     needs: export-web
     runs-on: ubuntu-latest

@@ -1,7 +1,7 @@
 extends Control
 
 func _ready():
-	if OS.has_feature("javascript"):
+	if OS.has_feature('JavaScript'):
 		$VBoxContainer/ExitButton.hide()
 	else:
 		# warning-ignore:return_value_discarded

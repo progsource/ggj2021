@@ -2,7 +2,7 @@
 
 A Global Game Jam 2021 entry.
 
-[Play on itch.io now - tbd](#)
+[Play on itch.io now](https://progsource.itch.io/berries-come-for-you)
 
 ## Credits
 
@@ -10,8 +10,6 @@ A Global Game Jam 2021 entry.
 | --- | --- |
 | Art: | @progsource |
 | Dev: | @teemitzitrone, @progsource |
-| Sound: | @teemitzitrone, @progsource |
-| Music: | pending... |
 
 ### Used Tools
 
@@ -23,8 +21,14 @@ A Global Game Jam 2021 entry.
 
 ## Code License
 
-MIT
+[MIT](LICENSE)
 
-## Asset Licenses
+## Credits
 
-tbd
+1bit_control_prompts_by_retryeli.zip
+* https://opengameart.org/content/1bit-keyboardcontroller-prompts-assets
+* Copyright/Attribution Notice: @retryeli
+
+kenney_fontpackage.zip
+* https://kenney.nl/assets/kenney-fonts
+* Copyright/Attribution Notice: @KenneyNL

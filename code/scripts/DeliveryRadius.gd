@@ -11,13 +11,13 @@ func _ready():
 
 func _on_body_entered(body):
 	if "player" in body.get_groups():
+		GLOBAL.event_bus.emit_signal("action_radius_entered", actor)
 		animation_player.play("display")
 		yield( animation_player, "animation_finished")
 		animation_player.play("bob")
-		GLOBAL.event_bus.emit_signal("action_radius_entered", actor)
 
 func _on_body_exited(body):
 	if "player" in body.get_groups():
+		GLOBAL.event_bus.emit_signal("action_radius_exited", actor)
 		animation_player.stop()
 		animation_player.play_backwards("display")
-		GLOBAL.event_bus.emit_signal("action_radius_exited", actor)

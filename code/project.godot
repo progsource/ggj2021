@@ -30,7 +30,7 @@ window/size/width=480
 window/size/height=270
 window/size/test_width=960
 window/size/test_height=540
-window/stretch/mode="2d"
+window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
 [importer_defaults]
@@ -103,7 +103,10 @@ limits/message_queue/max_size_kb=2048
 [rendering]
 
 quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=1
 quality/2d/use_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+environment/default_clear_color=Color( 0, 0.894118, 0.211765, 1 )
 environment/default_environment="res://default_env.tres"

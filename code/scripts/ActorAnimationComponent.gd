@@ -1,6 +1,6 @@
 extends "res://scripts/ActorComponent.gd"
 
-var last_direction : Vector2
+var last_direction := Vector2.ZERO
 
 func process(_delta) -> void :
 	if actor.velocity != Vector2.ZERO:

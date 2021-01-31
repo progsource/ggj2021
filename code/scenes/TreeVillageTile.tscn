@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/gfx/spritesheet.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/DebugNavi.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/Neighborhood.gd" type="Script" id=3]
 [ext_resource path="res://scenes/PetSpot.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=5]
@@ -75,3 +76,5 @@ position = Vector2( 164.065, -47.5713 )
 
 [node name="PosterSpot4" type="Position2D" parent="PosterContainer"]
 position = Vector2( 90.273, -198.526 )
+
+[node name="DebugNavi" parent="." instance=ExtResource( 2 )]

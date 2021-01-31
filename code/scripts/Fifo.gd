@@ -41,6 +41,10 @@ func pop():
 	GLOBAL.event_bus.emit_signal("fifo_pop")
 	return o
 
+func clear() -> void :
+	head = null
+	tail = null
+
 func get_item_list() -> Array:
 	var list := []
 	if head == null:

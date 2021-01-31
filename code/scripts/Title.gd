@@ -12,6 +12,8 @@ func _ready():
 	# warning-ignore:return_value_discarded
 	$VBoxContainer/HBoxContainer/PlayGuy.connect("button_up", self, "on_play_guy")
 
+	GLOBAL.follow_chain.clear()
+
 
 func on_exit() -> void :
 	get_tree().quit()

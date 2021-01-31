@@ -151,6 +151,7 @@ class GoHome:
 			target = null
 			parent.actor.hide()
 			parent.actor.set_process(false)
+			GLOBAL.game_data.pets -=  1
 			return
 
 		var closest_point_to_actor = astar.get_closest_point(parent.actor.global_position)

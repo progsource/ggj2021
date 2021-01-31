@@ -80,7 +80,7 @@ class RandomWalk:
 		timer.queue_free()
 		GLOBAL.event_bus.disconnect("follow_chain", self, "_on_follow_chain_updated")
 		parent.current_state = next
-		parent.speed = 1.8
+		parent.speed = 0.9
 		parent.actor.set_collision_layer_bit(0, 0)
 #		print(parent.current_state.name, " is now active")
 

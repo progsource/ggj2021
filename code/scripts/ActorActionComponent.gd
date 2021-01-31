@@ -7,8 +7,8 @@ func init() -> void :
 	GLOBAL.event_bus.connect("action_radius_exited", self, "_on_action_radius_exited")
 	GLOBAL.event_bus.connect("action_radius_entered", self, "_on_action_radius_entered")
 
-func input(event) -> void :
-	if event.is_action_pressed("action") && nearest_actions.size() > 0:
+func input(_event) -> void :
+	if Input.is_action_just_pressed("action") && nearest_actions.size() > 0:
 		_pickup_action()
 		_deliver_action()
 
@@ -20,6 +20,7 @@ func _pickup_action():
 				pet
 			)
 			nearest_actions.erase(pet)
+			return
 
 func _deliver_action():
 	for poster in nearest_actions:
@@ -29,7 +30,7 @@ func _deliver_action():
 				GLOBAL.follow_chain.pop(),
 				poster
 			)
-			nearest_actions.erase(poster)
+			return
 
 func _on_action_radius_exited(action_object):
 	if nearest_actions.has(action_object):
